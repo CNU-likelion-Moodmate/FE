@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Pretendard';
+  font-display: swap;
+  line-height: normal;
+  src: url('./assets/fonts/PretendardVariable.woff2');
+}
+
+@font-face {
+  font-family: 'crayon';
+  font-display: swap;
+  line-height: normal;
+  src: url('./assets/fonts/Typo_Crayon.ttf');
+}
+
+* { font-family: 'Pretendard';}
