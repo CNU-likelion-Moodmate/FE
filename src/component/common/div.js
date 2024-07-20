@@ -7,11 +7,11 @@ export const Text = styled.div`
   color: ${ props => props.$color || 'black'};
   margin: ${ props => props.$margin || '0'};
   padding: ${ props => props.$padding || '0'};
-  text-align: ${ props => props.$textAlign || 'left'};
+  text-align: ${ props => props.$textAlign || 'center'};
 `;
 
 export const Div = styled.div`
-  display: flex;
+  ${ props => props.$flex && 'display: flex;'};
   flex-grow: 1;
   position: relative;
   flex-direction: ${ props => props.$direction || 'row'};
@@ -22,8 +22,9 @@ export const Div = styled.div`
   width: ${ props => props.$width || 'auto'};
   height: ${ props => props.$height || 'auto'};
   border-radius: ${ props => props.$radius || '15px'};
+  max-width: ${ props => props.$maxWidth || '480px'};
   ${ props => props.$cursor && 'cursor: pointer;'};
   ${ props => props.$backgroundColor && `background-color: ${props.$backgroundColor};`};
-  ${ $hoverColor => $hoverColor && `&:hover { background-color: ${$hoverColor}; }`};
+  ${ props => props.$border && `border: ${props.$border};`};
   gap: ${ props => props.$gap || '0'};
 `;

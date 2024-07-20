@@ -26,4 +26,15 @@ code {
   src: url('./assets/fonts/Typo_Crayon.ttf');
 }
 
-* { font-family: 'Pretendard';}
+* { 
+  font-family: 'Pretendard';
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
