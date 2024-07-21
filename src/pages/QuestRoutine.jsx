@@ -3,7 +3,7 @@ import TabBar from '../component/common/TabBar';
 import TopAppBar from './TopAppBar';
 import { Div } from '../component/common/div';
 
-const Quest = () => {
+const QuestRoutine = () => {
   return(
     <>
     <Div>
@@ -14,4 +14,4 @@ const Quest = () => {
   )
 }
 
-export default Quest;
+export default QuestRoutine;

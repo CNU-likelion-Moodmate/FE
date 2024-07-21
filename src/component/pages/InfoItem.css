@@ -1,0 +1,13 @@
+.InfoItemContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.InfoText {
+    margin-left: 25px;
+}
+
+.InfoArrowIcon {
+    align-items: right;
+    margin: 2px 35px 0 0;
+}
