@@ -1,0 +1,24 @@
+.slick-list{ 
+  overflow: hidden;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.slick-prev, .slick-next {
+  width: 35px;
+  height: 35px;
+  z-index: 1;
+  top: 140px;
+}
+
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+
+img {
+  left: 50%;
+  transform: translateX(-50%);
+}

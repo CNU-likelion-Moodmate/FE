@@ -1,9 +1,5 @@
-const Index = () => {
-  return(
-    <div>
-      <h1>Index</h1>
-    </div>
-  )
-}
-
-export default Index;
+export { default as MyPage } from './MyPage';
+export { default as Quest } from './Quest';
+export { default as NotFound } from './NotFound';
+export { default as Chat } from './chat/Chat';
+export { default as ChatRoom } from './chat/ChatRoom';
