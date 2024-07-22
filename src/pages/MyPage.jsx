@@ -7,7 +7,7 @@ import InfoItem from "../component/pages/InfoItem";
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
   `
 
 const ProfileImg = styled.div`
@@ -19,7 +19,7 @@ gap: 30px;
 const MyPage = () => {
   return(
     <div>
-      <Div $margin='100px 0 0' $flex={true} $direction='column'>
+      <Div $margin='70px 0 0' $flex={true} $direction='column'>
         <ProfileImg>
           <img src={ProfileImage} alt="Profile"/>
         </ProfileImg>

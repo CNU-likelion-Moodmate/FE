@@ -75,7 +75,7 @@ export const Line = styled.div`
   height: ${ props => props.$height || '24px'};
   width: ${ props => props.$width || '100%'};
   background-color: ${ props => props.$color || GRAY1 };
-  margin: 50px 0 40px 0;
+  margin: 50px 0 50px 0;
 `;
 
 export const InfoText = styled.div`
