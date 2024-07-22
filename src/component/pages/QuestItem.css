@@ -1,0 +1,29 @@
+.QuestItem {
+    width: 333px;
+    border: 1px, solid, #D9D9D9;
+    border-radius: 13px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+.Quest {
+    display: flex;
+}
+
+.QuestText {
+    border-color: #0c0c0c;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 20px 0 5px 20px;
+    width: 262px;
+}
+
+.HeartIcon {
+    margin: 23px 0 0 15px;
+}
+
+.QuestDate {
+    font-size: 12px;
+    color: #CCCCCC;
+    margin: 0 0 20px 20px;
+}

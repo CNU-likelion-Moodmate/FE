@@ -7,11 +7,11 @@ import { BLACK, GRAY3 } from "../../src/component/constants/color";
 import { ChatIcon, QuestIcon, MyPageIcon } from "../../src/assets/icons";
 
 const Container = styled(Div)`
-  position: fixed;
   width: 100%;
   height: 90px;
   justify-content: space-evenly;
   display: flex;
+  margin-bottom: 20px;
 `;
 
 const LinkButton = styled(Link)`
