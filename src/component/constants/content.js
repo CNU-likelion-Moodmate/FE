@@ -9,6 +9,7 @@ export const URL = {
   QUEST: '/quest',
   MYPAGE: '/mypage',
   NOT_FOUND: '*',
+  QUESTROUTINE: '/questroutine',
 }
 
 export const CAROUSEL = {
