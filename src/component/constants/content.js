@@ -29,5 +29,6 @@ export const FONT_WEIGHT = {
   LIGHT: {fontWeight: 300},
   REGULAR: {fontWeight: 400},
   MEDIUM: {fontWeight: 500},
+  SEMIBOLD: {fontWeight: 600},
   BOLD: {fontWeight: 700},
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import TabBar from '../component/common/TabBar';
 import TopAppBar from './TopAppBar';
-import { Div } from '../component/common/div';
 import QuestItem from '../component/pages/QuestItem';
 import styled from "styled-components";
 import { GRAY1 } from '../component/constants/color';
+import QuestDeleteModal from '../component/modal/QuestDeleteModal';
+import QuestReviewModal from '../component/modal/QuestReviewModal';
 
 const QuestItemContainer = styled.div`
 display: flex;
@@ -29,6 +30,8 @@ const Quest = () => {
         </QuestItemContainer>
       </BackgroundColor>
       <TabBar />
+      <QuestDeleteModal />
+      <QuestReviewModal />
     </>
   );
 }
