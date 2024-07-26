@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { YELLOW } from '../constants/color';
-import { MOBILE_SIZE, FONT_WEIGHT } from '../constants/content';
-import { GRAY1, GRAY6 } from '../constants/color';
+import { YELLOW } from '../../constants/color';
+import { MOBILE_SIZE, FONT_WEIGHT } from '../../constants/content';
+import { GRAY1, GRAY6 } from '../../constants/color';
 
 export const Text = styled.div`
   font-family: ${ props => props.$font || 'Pretendard'};

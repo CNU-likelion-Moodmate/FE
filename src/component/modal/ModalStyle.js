@@ -1,4 +1,4 @@
-import { DIM, WHITE } from '../constants/color';
+import { DIM, WHITE } from '../../constants/color';
 
 export const customModalStyles = {
   overlay: {

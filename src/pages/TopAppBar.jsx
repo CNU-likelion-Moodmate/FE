@@ -1,10 +1,9 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { URL } from "../../src/component/constants/content";
-import { Div } from "../../src/component/common/div";
-import { BLACK, GRAY3 } from "../../src/component/constants/color";
-import { ChatIcon, QuestIcon, MyPageIcon } from "../../src/assets/icons";
+import { URL } from "../constants/content";
+import { Div } from "../component/common/div";
+import { BLACK } from "../constants/color"
 
 const Container = styled(Div)`
   width: 100%;
@@ -33,11 +32,11 @@ const Underline = styled.div`
 `;
 
 const TopAppBar = () => {
-  const location = useLocation();
+  // const location = useLocation();
 
-  const isSelected = (path) => {
-    return location.pathname === path;
-  }
+  // const isSelected = (path) => {
+  //   return location.pathname === path;
+  // }
 
   return (
     <Container>

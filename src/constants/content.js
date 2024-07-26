@@ -1,5 +1,5 @@
-import FRIEND from '../../assets/cards/friend.png';
-import ADVISER from '../../assets/cards/adviser.png';
+import FRIEND from '../assets/cards/friend.png';
+import ADVISER from '../assets/cards/adviser.png';
 
 export const MOBILE_SIZE = '390px';
 

@@ -1,4 +1,4 @@
-import { BLACK, GRAY3 } from "../../component/constants/color";
+import { BLACK, GRAY3 } from "../../constants/color";
 import { Text } from "../../component/common/div";
 
 export const QuestIcon = ({ selected = false }) => {

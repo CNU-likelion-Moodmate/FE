@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
 import { Div, Text } from "../common/div";
-import { CAROUSEL } from "../constants/content";
+import { CAROUSEL } from "../../constants/content";
 import { ArrowLeftIcon, ArrowRightIcon } from "../../assets/icons";
 
 const settings = {
@@ -24,7 +24,7 @@ const Carousel = () => {
       <Slider {...settings}>
         {data.map((item, index) => (
           <Div key={index}>
-            <img src={item.image} alt='image' />
+            <img src={item.image} alt='slide' />
             <Text $size='14px' $lineHeight='21px' $weight='LIGHT' $margin='34px 0 0' style={{ whiteSpace: 'pre-wrap' }}>
               {item.content}
             </Text>

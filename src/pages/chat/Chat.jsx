@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TabBar from "../../component/common/TabBar";
-import { GRAY2 } from "../../component/constants/color";
+import { GRAY2 } from "../../constants/color";
 import { Div, Text, Button } from "../../component/common/div";
 import Carousel from "../../component/pages/Carousel";
 
