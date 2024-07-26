@@ -31,7 +31,7 @@ const Quest = () => {
       </BackgroundColor>
       <TabBar />
       <QuestDeleteModal />
-      <QuestReviewModal />
+      {/* <QuestReviewModal /> */}
     </>
   );
 }
