@@ -26,6 +26,7 @@ export const Button = styled.button`
   padding: ${ props => props.$padding || '10px 20px'};
   border-radius: ${ props => props.$radius || '30px'};
   margin: ${ props => props.$margin || '0'};
+  cursor: pointer;
 `;
 
 export const Div = styled.div`
@@ -50,7 +51,7 @@ export const Div = styled.div`
 export const ProfileName = styled.div`
   font-family: ${ props => props.$font || 'Pretendard'};
   font-size: ${ props => props.$size || '16px'};
-  font-weight: ${ props => props.$fontWeight || '600'};
+  font-weight: ${ props => props.$weight || '600'};
   color: ${ props => props.$color || 'black'};
   margin: ${ props => props.$margin || '20px 0 0 0'};
   padding: ${ props => props.$padding || '0'};
@@ -62,7 +63,7 @@ export const ProfileName = styled.div`
 export const ProfileId = styled.div`
   font-family: ${ props => props.$font || 'Pretendard'};
   font-size: ${ props => props.$size || '14px'};
-  font-weight: ${ props => props.$fontWeight || '300'};
+  font-weight: ${ props => props.$weight || '300'};
   color: ${ props => props.$color || GRAY6 };
   margin: ${ props => props.$margin || '3px'};
   padding: ${ props => props.$padding || '0'};
