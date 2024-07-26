@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Div, Text, Button } from "../../component/common/div";
+import { Text } from "../../component/common/div";
 import { GRAY2 } from "../../component/constants/color";
 import ArrowIconBtn from "./ArrowIconBtn";
 import TextArea from "./TextArea";

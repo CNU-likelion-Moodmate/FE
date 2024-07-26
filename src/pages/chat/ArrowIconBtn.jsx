@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ArrowIcon } from "../../assets/icons";
+import { Link, useLocation } from "react-router-dom";
+import { URL } from '../../component/constants/content';
 
-const ArrowButton = styled.button`
+const ArrowLinkButton = styled(Link)`
   background: none;
   border: none;
   font-size: 24px;
@@ -12,11 +14,18 @@ const ArrowButton = styled.button`
   margin-left: 16px;
 `;
 
-const ArrowIconBtn = ({ onClick }) => {
+const ArrowIconBtn = () => {
+
+  const location = useLocation();
+
+  const isSelected = (path) => {
+    return location.pathname === path;
+  }
+
   return (
-    <ArrowButton onClick={onClick}>
-      <ArrowIcon />
-    </ArrowButton>
+    <ArrowLinkButton to={URL.CHAT}>
+      <ArrowIcon selected={isSelected(URL.CHAT)} />
+    </ArrowLinkButton>
   );
 };
 
