@@ -39,11 +39,8 @@ const Button = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
-
-  &:hover {
-    background-color: #FEE270;
-    color: black;
-  }
+  background-color: ${(props) => (props.isFormValid ? "#FEE270" : "#606060")};
+  color: ${(props) => (props.isFormValid ? "black" : "white")};
 `;
 
 const SignUpLink = styled.a`
@@ -57,19 +54,31 @@ const SignUpLink = styled.a`
 
 const LoginInput = () => {
 
-    const [isHovered, setIsHovered] = useState(false);
+    // 상태 변수 정의
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // 버튼 텍스트를 결정하는 함수
+  const isFormValid = email && password;
+  const buttonText = isFormValid ? "시작하기" : "로그인";
 
   return (
     <Div>
       <Form>
-        <Input type="email" placeholder="이메일" />
-        <Input type="password" placeholder="비밀번호" />
-        <Button
-          type="submit"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {isHovered ? "시작하기" : "로그인"}
+      <Input
+          type="email"
+          placeholder="이메일"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          type="password"
+          placeholder="비밀번호"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button type="submit" isFormValid={isFormValid}>
+          {buttonText}
         </Button>
       </Form>
       <SignUpLink href="/signup">회원가입</SignUpLink>
