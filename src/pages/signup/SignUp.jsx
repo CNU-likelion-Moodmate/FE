@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SignUpInput from "./SignUpInput";
-import SignUpHeader from "./SignUpComponent";
+import SignUpHeader from "./SignUpHeader";
 import SignUpBtn from "./SignUpBtn";
 
 const Container = styled.div`

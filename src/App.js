@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Div } from "./component/common/div";
-import { Chat, ChatRoom, MyPage, NotFound, Quest, QuestRoutine, Login, SignUp } from "./pages";
+import { Chat, ChatRoom, MyPage, NotFound, Quest, QuestRoutine, Login, SignUp, SignUpAgree } from "./pages";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route path="/questroutine" element={<QuestRoutine />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/signupagree" element={<SignUpAgree />} />
         </Routes>
       </Div>
     </BrowserRouter>
