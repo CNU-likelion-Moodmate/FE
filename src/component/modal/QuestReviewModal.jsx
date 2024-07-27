@@ -26,7 +26,7 @@ const Close = styled(CloseIcon)`
   cursor: pointer;
 `;
 
-const QuestReviewModal = ({ isOpen = true }) => {
+const QuestReviewModal = ({ isOpen = false }) => {
   return(
     <Modal isOpen={isOpen} style={customModalStyles}>
       <Close />

@@ -15,6 +15,7 @@ export const Text = styled.div`
   text-align: ${ props => props.$align || 'center'};
   line-height: ${ props => props.$lineHeight || '1.5'};
   ${ props => props.$weight && FONT_WEIGHT[props.$weight]};
+  ${ props => props.$background && `background-color: ${props.$background};`};
 `;
 
 export const Button = styled.button`
@@ -42,9 +43,11 @@ export const Div = styled.div`
   height: ${ props => props.$height || 'auto'};
   border-radius: ${ props => props.$radius || '15px'};
   max-width: ${ props => props.$maxWidth || MOBILE_SIZE};
+  ${ props => props.$maxHeight && `max-height: ${props.$maxHeight};`};
   ${ props => props.$cursor && 'cursor: pointer;'};
   ${ props => props.$backgroundColor && `background-color: ${props.$backgroundColor};`};
   ${ props => props.$border && `border: ${props.$border};`};
+  ${ props => props.$alginSelf && `align-self: ${props.$alginSelf};`};
   gap: ${ props => props.$gap || '0'};
 `;
 
