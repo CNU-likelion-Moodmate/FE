@@ -5,3 +5,4 @@ export { default as Chat } from './chat/Chat';
 export { default as ChatRoom } from './chat/ChatRoom';
 export { default as QuestRoutine } from './QuestRoutine';
 export { default as Login } from './Login';
+export { default as SignUp } from './signup/SignUp';
