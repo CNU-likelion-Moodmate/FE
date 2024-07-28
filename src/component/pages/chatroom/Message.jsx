@@ -7,28 +7,30 @@ export const Message = styled(Text)`
   padding: 8px 10px;
 `;
 
-export const ReceivedMessage = () => {
+export const ReceivedMessage = ({ chat }) => {
   return (
     <Div 
       $flex={true} 
       $backgroundColor={YELLOW}
       $padding='8px 10px'
       $alginSelf='flex-start'
+      $margin='0 0 10px'
     >
-      안녕하세요
+      { chat }
     </Div>
   )
 }
 
-export const SentMessage = () => {
+export const SentMessage = ({ chat }) => {
   return (
     <Div 
       $flex={true} 
       $backgroundColor={GRAY1}
       $padding='8px 10px'
       $alginSelf='flex-end'
+      $margin='0 0 10px'
     >
-      안녕하세요
+      { chat }
     </Div>
   )
 }

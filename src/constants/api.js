@@ -4,7 +4,8 @@ export const USER_URL = {
 };
 
 export const CHAT_URL = {
-  chatting: '/chatting',
+  model: '/select-model',
+  chatting: '/chat',
 };
 
 export const QUEST_URL = {

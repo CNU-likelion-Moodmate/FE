@@ -5,7 +5,7 @@ import QuestItem from '../component/pages/QuestItem';
 import styled from "styled-components";
 import { GRAY1 } from '../constants/color';
 import QuestDeleteModal from '../component/modal/QuestDeleteModal';
-import QuestReviewModal from '../component/modal/QuestReviewModal';
+// import QuestReviewModl from '../component/modal/QuestReviewModal';
 
 const QuestItemContainer = styled.div`
 display: flex;
