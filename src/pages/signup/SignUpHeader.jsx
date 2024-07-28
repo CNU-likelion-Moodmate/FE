@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ArrowLeftIcon } from "../../assets/icons";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -23,11 +24,13 @@ const Header = styled.div`
   transform: translateX(-50%);
 `
 
-const SignUpHeader = () => {
+const SignUpHeader = ( {to} ) => {
     return (
         <>
         <Container>
+          <Link to={to}>
             <SignArrow />
+          </Link>
             <Header>회원가입</Header>
         </Container>
         </>

@@ -47,7 +47,7 @@ const SignUpAgree = () => {
 
   return (
     <>
-      <SignUpHeader />
+      <SignUpHeader to="/signup" />
       <Container>
         <CheckboxField
           type="checkbox"
@@ -81,7 +81,7 @@ const SignUpAgree = () => {
           link="/"
         />
       </Container>
-      <SignUpBtn isFormValid={isFormValid}>회원가입</SignUpBtn>
+      <SignUpBtn isFormValid={isFormValid} to="/" type="button">회원가입</SignUpBtn>
     </>
   );
 };
