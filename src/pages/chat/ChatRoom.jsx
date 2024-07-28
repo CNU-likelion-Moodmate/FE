@@ -32,6 +32,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+`;
 
 const ChatRoom = () => {
   const location = useLocation();

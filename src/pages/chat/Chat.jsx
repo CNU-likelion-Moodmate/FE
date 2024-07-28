@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { URL } from "../../component/constants/content";
 import TabBar from "../../component/common/TabBar";
 import { GRAY2 } from "../../constants/color";
-import { Div, Text } from "../../component/common/div";
+import { Div, Text, Button } from "../../component/common/div";
 import Carousel from "../../component/pages/Carousel";
 
 const Header = styled(Text)`
