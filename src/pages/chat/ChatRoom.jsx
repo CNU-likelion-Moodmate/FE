@@ -32,7 +32,6 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-`;
 
 const ChatRoom = () => {
   const location = useLocation();
@@ -43,6 +42,7 @@ const ChatRoom = () => {
     navigate(-1);
   }
   return(
+
     <Div $radius='0' $height='100vh'>
       <Header>
         <ArrowIcon onClick={handleBack} style={{ cursor: 'pointer'}} />
