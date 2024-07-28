@@ -1,8 +1,10 @@
+import axios from 'axios';
+
 export const API_BASE = "http://localhost:8080";
 
 const axiosClient = axios.create({
   baseURL: API_BASE,
-  timeout: 1000,
+  timeout: 2000,
   headers: {
     'Content-Type': 'application/json'
   }
