@@ -84,6 +84,7 @@ const ChatRoom = () => {
   }
 
   return(
+
     <Div $radius='0' $height='100vh'>
       <Header>
         <ArrowIcon onClick={handleBack} style={{ cursor: 'pointer'}} />
