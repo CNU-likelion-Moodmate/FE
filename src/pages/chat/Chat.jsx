@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { URL } from "../../component/constants/content";
 import TabBar from "../../component/common/TabBar";
 import { GRAY2 } from "../../constants/color";
 import { Div, Text } from "../../component/common/div";
@@ -23,7 +22,6 @@ const Chat = () => {
         <Text $font='crayon' $size='16px'>오늘은 어떤 친구와 대화할까요?</Text>
         <Carousel />
         <Link to="/chat">
-          <Button $font='crayon' $padding='13px 20px' $margin='24px 0 0'>곰곰이와 대화 시작하기</Button>
         </Link>
       </Div>
       <TabBar />
