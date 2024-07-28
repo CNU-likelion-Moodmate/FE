@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Div } from "../common/div";
+import { Link } from "react-router-dom";
 
 const Form = styled.form`
   display: flex;
@@ -29,6 +30,12 @@ const Input = styled.input`
   }
 `;
 
+const LoginLink = styled(Link)`
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+`
+
 const Button = styled.button`
   width: 100%;
   padding: 13px;
@@ -38,7 +45,7 @@ const Button = styled.button`
   background-color: #606060;
   color: white;
   font-size: 16px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isFormValid ? "pointer" : "default")};
   background-color: ${(props) => (props.isFormValid ? "#FEE270" : "#606060")};
   color: ${(props) => (props.isFormValid ? "black" : "white")};
 `;
@@ -58,8 +65,21 @@ const LoginInput = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // 이메일 형식을 검사하는 함수
+  const isEmailValid = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // 비밀번호 형식을 검사하는 함수
+  const isPasswordValid = (password) => {
+    // 영어 소문자와 숫자를 포함하여 10자 이상인지 확인
+    const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{10,}$/;
+    return passwordRegex.test(password);
+  };
+
   // 버튼 텍스트를 결정하는 함수
-  const isFormValid = email && password;
+  const isFormValid = isEmailValid(email) && isPasswordValid(password);
   const buttonText = isFormValid ? "시작하기" : "로그인";
 
   return (
@@ -77,9 +97,17 @@ const LoginInput = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit" isFormValid={isFormValid}>
-          {buttonText}
-        </Button>
+        {isFormValid ? (
+          <LoginLink to="/">
+            <Button type="button" isFormValid={isFormValid}>
+              {buttonText}
+            </Button>
+          </LoginLink>
+        ) : (
+          <Button type="button" isFormValid={isFormValid}>
+            {buttonText}
+          </Button>
+        )}
       </Form>
       <SignUpLink href="/signup">회원가입</SignUpLink>
     </Div>
