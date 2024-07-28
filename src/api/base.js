@@ -1,4 +1,4 @@
-export const API_BASE = "http://localhost:3000";
+export const API_BASE = "http://localhost:8080";
 
 const axiosClient = axios.create({
   baseURL: API_BASE,

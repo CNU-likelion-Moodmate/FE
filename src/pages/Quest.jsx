@@ -3,7 +3,7 @@ import TabBar from '../component/common/TabBar';
 import TopAppBar from './TopAppBar';
 import QuestItem from '../component/pages/QuestItem';
 import styled from "styled-components";
-import { GRAY1 } from '../component/constants/color';
+import { GRAY1 } from '../constants/color';
 import QuestDeleteModal from '../component/modal/QuestDeleteModal';
 import QuestReviewModal from '../component/modal/QuestReviewModal';
 

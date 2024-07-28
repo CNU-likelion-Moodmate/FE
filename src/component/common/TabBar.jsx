@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { URL } from "../constants/content";
+import { URL } from "../../constants/content";
 import { Div } from "./div";
-import { GRAY3 } from "../constants/color";
+import { GRAY3 } from "../../constants/color";
 import { ChatIcon, QuestIcon, MyPageIcon } from "../../assets/icons";
 
 const Container = styled(Div)`

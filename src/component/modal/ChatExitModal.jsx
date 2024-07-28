@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import styled from 'styled-components';
 import { customModalStyles } from './ModalStyle';
 import { Text, Button, Div } from '../common/div';
-import { GRAY1 } from '../constants/color';
+import { GRAY1 } from '../../constants/color';
 
 const ModalButton = styled(Button)`
   flex-grow: 1;
