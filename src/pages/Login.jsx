@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Div } from "../component/common/div";
 import LoginInput from "../component/pages/LoginInput";
 
 const Header = styled.div`
