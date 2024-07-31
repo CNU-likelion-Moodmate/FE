@@ -34,3 +34,5 @@ export const FONT_WEIGHT = {
   SEMIBOLD: {fontWeight: 600},
   BOLD: {fontWeight: 700},
 }
+
+export const EMOTION = ['불안', '슬픔', '두려움', '후회', '우울', '속상함', '외로움', '공허함', '미움', '귀찮음', '답답함', '지친'];
