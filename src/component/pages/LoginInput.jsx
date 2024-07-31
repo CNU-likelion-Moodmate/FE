@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Div } from "../common/div";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { post } from "../../api/base";
 
 const Form = styled.form`
   display: flex;
@@ -30,12 +31,6 @@ const Input = styled.input`
   }
 `;
 
-const LoginLink = styled(Link)`
-  display: inline-block;
-  width: 100%;
-  text-decoration: none;
-`
-
 const Button = styled.button`
   width: 100%;
   padding: 13px;
@@ -60,54 +55,70 @@ const SignUpLink = styled.a`
 `;
 
 const LoginInput = () => {
+  const [userId, setUserId] = useState("");
+  const [userPw, setUserPw] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-    // 상태 변수 정의
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // 이메일 형식을 검사하는 함수
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  // 비밀번호 형식을 검사하는 함수
   const isPasswordValid = (password) => {
-    // 영어 소문자와 숫자를 포함하여 10자 이상인지 확인
     const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{10,}$/;
     return passwordRegex.test(password);
   };
 
-  // 버튼 텍스트를 결정하는 함수
-  const isFormValid = isEmailValid(email) && isPasswordValid(password);
+  const isFormValid = isEmailValid(userId) && isPasswordValid(userPw);
   const buttonText = isFormValid ? "시작하기" : "로그인";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isFormValid) {
+      setError("ID 또는 비밀번호 형식이 올바르지 않습니다.");
+      return;
+    }
+
+    try {
+      console.log("폼 데이터 전송:", { userId, userPw });
+      const response = await post('/login', { userId, userPw });
+      console.log("서버 응답:", response);
+
+      if (response.isMember === true ) {
+        setIsSubmitted(true);
+      } 
+    } catch (error) {
+      setError("아이디랑 비밀번호를 확인해주세요.");
+    }
+  };
+
+  useEffect(() => {
+    if (isSubmitted) {
+      navigate("/");
+    }
+  }, [isSubmitted, navigate]);
 
   return (
     <Div>
-      <Form>
-      <Input
+      <Form onSubmit={handleSubmit}>
+        <Input
           type="email"
           placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
         />
         <Input
           type="password"
           placeholder="비밀번호"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={userPw}
+          onChange={(e) => setUserPw(e.target.value)}
         />
-        {isFormValid ? (
-          <LoginLink to="/">
-            <Button type="button" isFormValid={isFormValid}>
-              {buttonText}
-            </Button>
-          </LoginLink>
-        ) : (
-          <Button type="button" isFormValid={isFormValid}>
-            {buttonText}
-          </Button>
-        )}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <Button type="submit" isFormValid={isFormValid}>
+          {buttonText}
+        </Button>
       </Form>
       <SignUpLink href="/signup">회원가입</SignUpLink>
     </Div>
