@@ -11,6 +11,7 @@ export const GRAY3 = '#CCCCCC';
 export const GRAY4 = '#959595';
 export const GRAY5 = '#606060';
 export const GRAY6 = '#A8A8A8';
+export const GRAY7 = '#D9D9D9';
 export const BLACK = '#3C3C3C';
 
 export const DIM = 'rgba(0, 0, 0, 0.4)';

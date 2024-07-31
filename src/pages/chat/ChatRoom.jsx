@@ -6,6 +6,8 @@ import { Div } from "../../component/common/div";
 import { ReceivedMessage, SentMessage } from '../../component/pages/chatroom/Message';
 import { ArrowIcon } from '../../assets/icons';
 import { chatApi, selectModelApi } from '../../api/chat';
+import SelectEmotion from '../../component/pages/chatroom/SelectEmotion';
+import { useSelector } from 'react-redux';
 
 const Header = styled(Div)`
   display: flex;
@@ -33,7 +35,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-    `;
+`;
 
 const ChatRoom = () => {
   const location = useLocation();
@@ -42,18 +44,31 @@ const ChatRoom = () => {
   const [chatInput, setChatInput] = useState('');
   const [chatList, setChatList] = useState([]);
   const [isMounted, setIsMounted] = useState(false);
+  const [showSelectEmotion, setShowSelectEmotion] = useState(false);
+  const [isSelectEmotion, setIsSelectEmotion] = useState({emotion: [], activity: 0});
+  const { emotion, activity } = useSelector((state) => state.emotion.value);
+  
+  useEffect(() => {
+    setShowSelectEmotion(false);
+    if (!isSelectEmotion.emotion.length) return;
+    const chat = isSelectEmotion.emotion.join(',');
+    handleSendMessage(chat);
+  }, [isSelectEmotion]);
 
   const addChat = (chat, isUser) => {
     setChatList((prev) => [...prev, { chat, isUser }]);
   }
 
   useEffect(() => {
+    setShowSelectEmotion(chatList.length === 4);
+  }, [chatList]);
+
+  useEffect(() => {
     if(isMounted) return;
     setIsMounted(true);
     const selectModel = async () => {
       try {
-        const res = await selectModelApi(type);
-        addChat( res.data.responseChat, false );
+        await selectModelApi(type);
       } catch (error) {
         console.error(error);
       }
@@ -66,11 +81,11 @@ const ChatRoom = () => {
     navigate(-1);
   }
 
-  const handleSendMessage = async () => {
-    addChat(chatInput, true);
+  const handleSendMessage = async (chat) => {
+    addChat(chat, true);
     setChatInput('');
     try {
-      const res = await chatApi(chatInput);
+      const res = await chatApi(chat);
       addChat(res.data.responseChat, false);
     } catch (error) {
       console.error(error);
@@ -80,11 +95,10 @@ const ChatRoom = () => {
   const handleKeyDown = (e) => {
     if (e.isComposing || e.keyCode === 229) return; 
     if(e.key !== 'Enter') return;
-    handleSendMessage();
+    handleSendMessage(chatInput);
   }
 
   return(
-
     <Div $radius='0' $height='100vh'>
       <Header>
         <ArrowIcon onClick={handleBack} style={{ cursor: 'pointer'}} />
@@ -92,13 +106,9 @@ const ChatRoom = () => {
       </Header>
       <Div $flex={true} $direction='column' $justify='flex-start' $padding='20px 28px' $maxHeight='calc(100vh - 130px)' style={{ overflowY: 'auto'}}> 
         {chatList.map((chat, index) => {
-          if(chat.isUser) {
-            return <SentMessage key={index} chat={chat.chat} />
-          } else {
-            return <ReceivedMessage key={index} chat={chat.chat} />
-          }
-        })
-        }
+          return chat.isUser ? <SentMessage key={index} chat={chat.chat} /> : <ReceivedMessage key={index} chat={chat.chat} />
+        })}
+        {showSelectEmotion && <SelectEmotion selected={setIsSelectEmotion} />}
       </Div>
         <Input 
           type="text" 

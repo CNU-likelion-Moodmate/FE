@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-export const API_BASE = "https://moodmate-app-d57dc9f1306a.herokuapp.com/";
+export const API_BASE = 'https://moodmate-app-d57dc9f1306a.herokuapp.com/';
+
 
 const axiosClient = axios.create({
   baseURL: API_BASE,
