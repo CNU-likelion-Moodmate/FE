@@ -32,6 +32,7 @@ export const Button = styled.button`
 
 export const Div = styled.div`
   ${ props => props.$flex && 'display: flex;'};
+  ${ props => props.$wrap && 'flex-wrap: wrap;'};
   flex-grow: 1;
   position: relative;
   flex-direction: ${ props => props.$direction || 'row'};
