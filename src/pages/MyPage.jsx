@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import TabBar from "../component/common/TabBar";
 import ProfileImage from '../assets/cards/profile_default.png';
 import { Div, ProfileName, ProfileId, Line } from "../component/common/div";
@@ -17,14 +18,23 @@ gap: 30px;
 `
 
 const MyPage = () => {
+  const [name, setName] = useState('');
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    // 서버에서 데이터 가져오는 대신 임시 데이터 설정
+    setName('영주');
+    setUserId('yeongju');
+  }, []);
+
   return(
     <div>
       <Div $margin='70px 0 0' $flex={true} $direction='column'>
         <ProfileImg>
           <img src={ProfileImage} alt="Profile"/>
         </ProfileImg>
-        <ProfileName>이름</ProfileName>
-        <ProfileId>user</ProfileId>
+        <ProfileName>{name}</ProfileName>
+        <ProfileId>{userId}</ProfileId>
         <Line />
       </Div>
       <InfoContainer>

@@ -18,8 +18,7 @@ const SignUp = () => {
 
     return (
         <>
-        <SignUpHeader />
-
+        <SignUpHeader to="/login" />
         <Container>
           <SignUpInput
             id="email"
@@ -46,7 +45,7 @@ const SignUp = () => {
             label="비밀번호 확인"
           />
         </Container>
-        <SignUpBtn isFormValid={isFormValid}>다음</SignUpBtn>
+        <SignUpBtn isFormValid={isFormValid} to="/signupagree" type="submit">다음</SignUpBtn>
         </>
     )
 }

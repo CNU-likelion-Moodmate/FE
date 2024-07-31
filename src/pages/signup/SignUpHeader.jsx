@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ArrowLeftIcon } from "../../assets/icons";
+import { Link } from "react-router-dom";
+import { SignUpArrowIcon } from "../../assets/icons";
 
 const Container = styled.div`
   display: flex;
@@ -10,8 +11,10 @@ const Container = styled.div`
   margin-bottom: 30px
 `;
 
-const SignArrow = styled(ArrowLeftIcon)`
-  margin-left: 15px;
+const SignArrow = styled(SignUpArrowIcon)`
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
 `;
 
 const Header = styled.div`
@@ -23,11 +26,13 @@ const Header = styled.div`
   transform: translateX(-50%);
 `
 
-const SignUpHeader = () => {
+const SignUpHeader = ( {to} ) => {
     return (
         <>
         <Container>
+          <Link to={to}>
             <SignArrow />
+          </Link>
             <Header>회원가입</Header>
         </Container>
         </>

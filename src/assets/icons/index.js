@@ -10,3 +10,4 @@ export { ReactComponent as ArrowLeftIcon } from './ArrowLeftIcon.svg';
 export { ReactComponent as ArrowRightIcon } from './ArrowRightIcon.svg';
 export { ReactComponent as InfoArrowIcon } from './InfoArrowIcon.svg';
 export { ReactComponent as CloseIcon } from './CloseIcon.svg';
+export { ReactComponent as SignUpArrowIcon } from './SignUpArrow.svg';
