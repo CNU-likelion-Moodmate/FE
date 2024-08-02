@@ -67,7 +67,7 @@ const LoginInput = () => {
   };
 
   const isPasswordValid = (password) => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{10,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{2,}$/;
     return passwordRegex.test(password);
   };
 

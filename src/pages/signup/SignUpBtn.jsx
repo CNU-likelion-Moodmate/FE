@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button`
   width: 334px;
@@ -15,20 +14,7 @@ const StyledButton = styled.button`
   cursor: ${(props) => (props.isFormValid ? "pointer" : "default")};
 `;
 
-//폼 제출 이벤트가 발생해야 Link이동 됨!
-const SignUpBtn = ({ isFormValid, onClick, children, type, to }) => {
-  if (isFormValid) {
-  return ( 
-    <Link to={to}>
-      <StyledButton
-          isFormValid={isFormValid}
-          onClick={onClick}
-          type={type}
-      >
-          {children}
-      </StyledButton>
-    </Link>);
-  }
+const SignUpBtn = ({ isFormValid, onClick, children, type }) => {
   return (
     <StyledButton
           isFormValid={isFormValid}
