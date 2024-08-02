@@ -34,7 +34,7 @@ const Input = styled.input`
 const Button = styled.button`
   width: 100%;
   padding: 13px;
-  margin-top: 25px;
+  margin-top: 35px;
   border: none;
   border-radius: 10px;
   background-color: #606060;
@@ -52,6 +52,19 @@ const SignUpLink = styled.a`
   text-decoration: underline;
   display: block;
   text-align: center;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  position: relative; // 버튼과 에러 메시지를 절대 위치로 배치하기 위해 설정
+`;
+
+const ErrorMessage = styled.p`
+  font-size: 15px;
+  color: red;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 50px;
 `;
 
 const LoginInput = () => {
@@ -90,7 +103,7 @@ const LoginInput = () => {
         setIsSubmitted(true);
       } 
     } catch (error) {
-      setError("아이디랑 비밀번호를 확인해주세요.");
+      setError("이메일과 비밀번호를 확인해주세요.");
     }
   };
 
@@ -115,12 +128,14 @@ const LoginInput = () => {
           value={userPw}
           onChange={(e) => setUserPw(e.target.value)}
         />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <Container>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <Button type="submit" isFormValid={isFormValid}>
           {buttonText}
         </Button>
+        </Container>
       </Form>
-      <SignUpLink href="/signup">회원가입</SignUpLink>
+      <SignUpLink href="/signupagree">회원가입</SignUpLink>
     </Div>
   );
 };

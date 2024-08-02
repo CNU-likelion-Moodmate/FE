@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import SignUpHeader from './SignUpHeader';
 import SignUpBtn from './SignUpBtn';
 import CheckboxField from './CheckboxField';
@@ -19,6 +20,8 @@ const SignUpAgree = () => {
     terms: false,
     privacy: false,
   });
+
+  const navigate = useNavigate();
 
   const handleAllChange = () => {
     const newValue = !allChecked;
@@ -45,9 +48,15 @@ const SignUpAgree = () => {
 
   const isFormValid = allChecked || (isChecked.age && isChecked.terms && isChecked.privacy );
 
+  const handleButtonClick = () => {
+    if (isFormValid) {
+      navigate('/signup');
+    }
+  };
+
   return (
     <>
-      <SignUpHeader to="/signup" />
+      <SignUpHeader to="/login" />
       <Container>
         <CheckboxField
           type="checkbox"
@@ -62,7 +71,7 @@ const SignUpAgree = () => {
           checked={isChecked.age}
           onChange={handleChange}
           label="만 14세 이상입니다"
-          link="/"
+          link="/age"
         />
         <CheckboxField
           type="checkbox"
@@ -70,7 +79,7 @@ const SignUpAgree = () => {
           checked={isChecked.terms}
           onChange={handleChange}
           label="(필수) 서비스 이용약관"
-          link="/"
+          link="/terms"
         />
         <CheckboxField
           type="checkbox"
@@ -78,10 +87,10 @@ const SignUpAgree = () => {
           checked={isChecked.privacy}
           onChange={handleChange}
           label="(필수) 개인정보 처리방침"
-          link="/"
+          link="/privacy"
         />
       </Container>
-      <SignUpBtn isFormValid={isFormValid} to="/" type="button">회원가입</SignUpBtn>
+      <SignUpBtn isFormValid={isFormValid} onClick={handleButtonClick} type="button">다음</SignUpBtn>
     </>
   );
 };

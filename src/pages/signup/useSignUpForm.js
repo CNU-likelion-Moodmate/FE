@@ -15,6 +15,12 @@ const useSignUpForm = (navigate) => {
   const isPasswordValid = (password) => /^(?=.*[a-z])(?=.*\d)[a-z\d]{2,}$/.test(password);
   const isFormValid = isIdValid(userId) && isPasswordValid(userPw) && confirmPassword && userPw === confirmPassword && userName;
 
+  const handleSuccess = () => {
+    if (window.confirm("회원가입이 완료되었습니다.")) {
+      navigate('/login');
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -57,7 +63,7 @@ const useSignUpForm = (navigate) => {
       });
 
       if (response.status === 200) {
-        navigate('/signupagree', { state: { userId, userPw } });
+        handleSuccess();
       }
     } catch (error) {
       console.error('회원가입 요청 중 오류가 발생했습니다.', error);

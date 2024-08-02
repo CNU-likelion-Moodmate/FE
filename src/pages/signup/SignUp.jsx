@@ -41,7 +41,7 @@ const SignUp = () => {
 
   return (
     <>
-      <SignUpHeader to="/login" />
+      <SignUpHeader to="/signupagree" />
       <form onSubmit={handleSubmit}>
         <Container>
           <InputWrapper>
@@ -88,7 +88,7 @@ const SignUp = () => {
             />
             {userNameError && <ErrorMessage>{userNameError}</ErrorMessage>}
           </InputWrapper>
-          <SignUpBtn isFormValid={isFormValid} type="submit">다음</SignUpBtn>
+          <SignUpBtn isFormValid={isFormValid} type="submit">회원가입</SignUpBtn>
         </Container>
       </form>
     </>
