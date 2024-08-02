@@ -2,6 +2,10 @@
   "name": "fe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.17.1",
+    "npm": "10.5.0"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "@testing-library/jest-dom": "^5.17.0",
@@ -24,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": [

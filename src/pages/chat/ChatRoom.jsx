@@ -94,7 +94,6 @@ const ChatRoom = () => {
     setChatInput('');
     try {
       const res = await chatApi(chat);
-      console.log('chatApi-res', res);
       addChat(res.data.responseChat, false);
     } catch (error) {
       console.error(error);
