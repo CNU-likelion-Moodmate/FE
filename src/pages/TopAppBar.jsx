@@ -8,7 +8,7 @@ import { BLACK } from "../constants/color"
 const Container = styled(Div)`
   width: 100%;
   height: 90px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   display: flex;
   margin-bottom: 20px;
 `;
@@ -32,23 +32,12 @@ const Underline = styled.div`
 `;
 
 const TopAppBar = () => {
-  // const location = useLocation();
-
-  // const isSelected = (path) => {
-  //   return location.pathname === path;
-  // }
 
   return (
     <Container>
-      <div>
+      <div style={{marginLeft: 27.5}}>
         <LinkButton to={URL.QUEST}>
         추천 받은 퀘스트
-        <Underline />
-        </LinkButton>
-      </div>
-      <div>
-        <LinkButton to={URL.QUESTROUTINE}>
-          나만의 퀘스트 루틴
         <Underline />
         </LinkButton>
       </div>
