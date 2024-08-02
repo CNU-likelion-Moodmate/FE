@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GRAY2, GRAY3 } from '../../constants/color';
@@ -35,7 +35,7 @@ const InputContainer = styled(Div)`
   gap: 10px;
 `;
 
-const ChatRoom = () => {
+const ChatRoom = React.forwardRef(() => {
   const location = useLocation();
   const navigate = useNavigate();
   const { type } = location.state;
@@ -46,6 +46,13 @@ const ChatRoom = () => {
   const [isSelectEmotion, setIsSelectEmotion] = useState({emotion: [], activity: 0});
   const [isInputActive, setInputActive] = useState(true);
   const [isRecommendOk, setIsRecommendOk] = useState(false);
+  const messageEndRef = useRef(null);
+
+  useEffect(() => {
+    messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    // eslint-disable-next-line
+  }, [chatList]);
+
   // const { emotion, activity } = useSelector((state) => state.emotion.value);
   const isRecommendActive = chatList.length > 5;
   
@@ -123,6 +130,7 @@ const ChatRoom = () => {
         })}
         {showSelectEmotion && <SelectEmotion selected={setIsSelectEmotion} />}
         {isRecommendOk && CHAT['quest']}
+        <div ref={messageEndRef}></div>
       </Div>
       <InputContainer>
         {isRecommendActive && isInputActive && <Button $backgroundColor={GRAY3} onClick={handleRecommendQuest} >퀘스트 추천받기</Button>}
@@ -138,6 +146,6 @@ const ChatRoom = () => {
       </InputContainer>
     </Div>
   )
-}
+});
 
 export default ChatRoom;
