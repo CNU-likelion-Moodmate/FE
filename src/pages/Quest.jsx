@@ -4,7 +4,6 @@ import TopAppBar from './TopAppBar';
 import QuestItem from '../component/pages/QuestItem';
 import styled from "styled-components";
 import { GRAY1 } from '../constants/color';
-import QuestReviewModal from '../component/modal/QuestReviewModal';
 import DeleteQuestModal from '../component/modal/DeleteQuestModal';
 import { LoadQuestApi, DeleteQuestApi } from '../api/quest';
 
@@ -17,7 +16,6 @@ const QuestItemContainer = styled.div`
 `
 
 const Quest = () => {
-  const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [isDeleteCompleteOpen, setIsDeleteCompleteOpen] = useState(false);
   const [questList, setQuestList] = useState([]);
 
@@ -53,7 +51,6 @@ const Quest = () => {
          ))}
       </QuestItemContainer>
       <TabBar />
-      <QuestReviewModal isOpen={isReviewOpen} closeModal={() => setIsReviewOpen(false)} />
       <DeleteQuestModal isOpen={isDeleteCompleteOpen} closeModal={() => setIsDeleteCompleteOpen(false)} />
     </div>
   );
