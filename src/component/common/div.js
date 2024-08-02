@@ -30,6 +30,17 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
+export const Input = styled.input`
+  width: 100%;
+  border: solid 1px ${GRAY1};
+  height: 43px;
+  border-radius: 24px;
+  padding: 0 19px;
+  $:focus {
+    outline: none;
+  }
+`;
+
 export const Div = styled.div`
   ${ props => props.$flex && 'display: flex;'};
   ${ props => props.$wrap && 'flex-wrap: wrap;'};

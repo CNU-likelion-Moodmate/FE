@@ -1,5 +1,6 @@
 import FRIEND from '../assets/cards/friend.png';
 import ADVISER from '../assets/cards/adviser.png';
+import RecommendQuest from '../component/pages/chatroom/RecommendQuest';
 
 export const MOBILE_SIZE = '390px';
 
@@ -36,3 +37,9 @@ export const FONT_WEIGHT = {
 }
 
 export const EMOTION = ['불안', '슬픔', '두려움', '후회', '우울', '속상함', '외로움', '공허함', '미움', '귀찮음', '답답함', '지친'];
+
+export const CHAT = {
+  friendly: '안녕! 난 곰곰이라고 해! 너의 따뜻한 친구가 되고 싶어. 나에게 고민을 말해줄래?',
+  serious: '안녕! 난 곰곰이라고 한단다! 너의 냉철한 조언자가 되고 싶어. 나에게 고민을 말해주겠니?',
+  quest: <RecommendQuest />
+}

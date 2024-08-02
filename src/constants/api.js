@@ -9,8 +9,9 @@ export const CHAT_URL = {
 };
 
 export const QUEST_URL = {
-  recommand: '/recommandQuest',
+  recommand: '/recommendQuest',
   save: '/saveQuest',
-  load: '/loadQuest',
+  load: (userId) => `/loadQuest?userId=${userId}`,
   complete: '/completeQuest', 
+  delete: '/deleteQuest',
 }

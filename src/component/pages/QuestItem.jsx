@@ -2,6 +2,7 @@ import "./QuestItem.css";
 import { HeartIcon } from "../../assets/icons";
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import QuestDeleteModal from '../modal/QuestDeleteModal';
 
 const QuestItemButton = styled.button`
   border: none;
@@ -34,27 +35,36 @@ const QuestItemContainer = styled.div`
     `}
 `;
 
-const QuestItem = () => {
-    const [showButton, setShowButton] = useState(false);
+const QuestItem = ({ quest, handleDelete }) => {
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+
+  const handleDeleteModal = () => {
+    setIsDeleteOpen(true);
+  }
 
     const handleItemClick = () => {
         setShowButton(!showButton);
     };
 
     return (
-        <QuestItemContainer onClick={handleItemClick} noHover={showButton}>
-            <div className="Quest">
-                <div className="QuestText">신곡 차트에서 내 플레이리스트 만들기</div>
-                <HeartIcon className="HeartIcon" />
-            </div>
-            <div className="QuestDate">{new Date().toLocaleDateString()}</div>
-            {showButton && (
-                <ButtonContainer>
-                    <QuestItemButton>삭제할래요</QuestItemButton>
-                    <QuestItemButton color="#FEE270">완료했어요</QuestItemButton>
-                </ButtonContainer>
-            )}
-        </QuestItemContainer>
+        <>
+            <QuestItemContainer onClick={handleItemClick} noHover={showButton}>
+                <div className="Quest">
+                    <div className="QuestText">{quest.contents}</div>
+                    <HeartIcon className="HeartIcon" />
+                </div>
+                <div className="QuestDate">{quest.date}</div>
+                {showButton && (
+                    <ButtonContainer>
+                        <QuestItemButton onClick={handleDeleteModal}>삭제할래요</QuestItemButton>
+                        <QuestItemButton color="#FEE270">완료했어요</QuestItemButton>
+                    </ButtonContainer>
+                )}
+            </QuestItemContainer>
+            <QuestDeleteModal isOpen={isDeleteOpen} handleDelete={handleDelete} id={quest.questRecordId} closeModal={() => setIsDeleteOpen(false)} />
+        </>
+
     )
 }
 
