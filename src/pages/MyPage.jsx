@@ -40,7 +40,7 @@ const MyPage = () => {
       <InfoContainer>
         <InfoItem text="문의하기"/>
         <InfoItem text="개인정보처리방침"/>
-        <InfoItem text="로그아웃"/>
+        <InfoItem text="로그아웃" to="/login"/>
       </InfoContainer>
       <TabBar />
     </div>
