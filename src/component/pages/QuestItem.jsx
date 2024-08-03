@@ -14,6 +14,7 @@ const QuestItemButton = styled.button`
   border-radius: 17px;
   font-size: 11px;
   background-color: ${(props) => props.color || '#D9D9D9'};
+  color: black;
 `;
 
 const ButtonContainer = styled.div`
@@ -24,17 +25,17 @@ const ButtonContainer = styled.div`
 `;
 
 const QuestItemContainer = styled.div`
-    width: 333px;
-    border: 1px solid #D9D9D9;
-    border-radius: 13px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.3s ease;
-    ${props => props.noHover && `
-      pointer-events: none;
-    `}
+  width: 333px;
+  border: 1px solid #D9D9D9;
+  border-radius: 13px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+  ${props => props.noHover && `
+    pointer-events: none;
+  `}
 `;
 
 const QuestItem = ({ quest, handleDelete }) => {

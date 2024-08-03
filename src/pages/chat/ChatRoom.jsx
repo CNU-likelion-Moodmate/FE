@@ -74,7 +74,12 @@ const ChatRoom = React.forwardRef(() => {
   }, [showSelectEmotion])
 
   useEffect(() => {
-    setShowSelectEmotion(chatList.length === 5);
+    if (chatList.length === 5) {
+      setTimeout(() => {
+        setShowSelectEmotion(true);
+      }, 1000)
+    }
+    // setShowSelectEmotion(chatList.length === 5);
   }, [chatList]);
 
   useEffect(() => {

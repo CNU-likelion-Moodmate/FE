@@ -9,7 +9,10 @@ import { ChatIcon, QuestIcon, MyPageIcon } from "../../assets/icons";
 const Container = styled(Div)`
   position: fixed;
   bottom: 0;
+  display: flex;
   width: 100%;
+  max-width: 388px;
+  flex-grow: 1;
   height: 60px;
   border-top: solid 1px ${GRAY3};
   border-radius: 0;
