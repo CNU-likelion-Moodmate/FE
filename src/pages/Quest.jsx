@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { GRAY1 } from '../constants/color';
 import DeleteQuestModal from '../component/modal/DeleteQuestModal';
 import { LoadQuestApi, DeleteQuestApi } from '../api/quest';
+import Loading from '../component/common/Loading';
 
 const QuestItemContainer = styled.div`
   display: flex;
@@ -18,21 +19,26 @@ const QuestItemContainer = styled.div`
 const Quest = () => {
   const [isDeleteCompleteOpen, setIsDeleteCompleteOpen] = useState(false);
   const [questList, setQuestList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       const res = await LoadQuestApi('user2@test.com');
       setQuestList(res.data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   }
 
   const handleDelete = async (id) => {
+    setIsLoading(true);
     try {
         await DeleteQuestApi(id);
-        setIsDeleteCompleteOpen(true);
         await fetchData();
+        setIsLoading(false);
+        setIsDeleteCompleteOpen(true);
     } catch (error) {
         console.log(error);
     }
@@ -52,6 +58,7 @@ const Quest = () => {
       </QuestItemContainer>
       <TabBar />
       <DeleteQuestModal isOpen={isDeleteCompleteOpen} closeModal={() => setIsDeleteCompleteOpen(false)} />
+      {isLoading && <Loading />}
     </div>
   );
 }

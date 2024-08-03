@@ -65,7 +65,6 @@ const QuestItem = ({ quest, handleDelete }) => {
           <QuestDeleteModal isOpen={isDeleteOpen} handleDelete={handleDelete} id={quest.questRecordId} closeModal={() => setIsDeleteOpen(false)} />
           <QuestReviewModal isOpen={isReviewOpen} id={quest.questRecordId} closeModal={() => setIsReviewOpen(false)} />
         </>
-
     )
 }
 
