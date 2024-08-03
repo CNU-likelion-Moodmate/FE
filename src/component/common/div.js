@@ -103,3 +103,13 @@ export const InfoText = styled.div`
   height: ${ props => props.$height || 'auto'};
   max-width: ${ props => props.$width || 'auto'};
 `;
+
+export const DimDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+`;
