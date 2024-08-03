@@ -13,16 +13,21 @@ const Header = styled(Text)`
   border-bottom: 1px solid ${GRAY2};
 `;
 
+const Container = styled(Div)`
+  overflow-y: auto;
+  height: calc(100vh - 60px)
+`;  
+
 const Chat = () => {  
   return(
-    <>
+    <Container >
       <Header>moodmate</Header>
       <Div $margin='35px 0 0' $flex={true} $direction='column'>
         <Text $font='crayon' $size='16px'>오늘은 어떤 친구와 대화할까요?</Text>
         <Carousel />
       </Div>
       <TabBar />
-    </>
+    </Container>
   )
 }
 

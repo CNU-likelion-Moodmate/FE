@@ -15,6 +15,7 @@ const Container = styled(Div)`
   border-radius: 0;
   justify-content: space-evenly;
   display: flex;
+  background-color: white;
 `;
 
 const LinkButton = styled(Link)`

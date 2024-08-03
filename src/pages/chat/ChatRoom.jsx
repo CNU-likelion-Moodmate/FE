@@ -47,6 +47,7 @@ const ChatRoom = React.forwardRef(() => {
   const [isInputActive, setInputActive] = useState(true);
   const [isRecommendOk, setIsRecommendOk] = useState(false);
   const messageEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -135,7 +136,9 @@ const ChatRoom = React.forwardRef(() => {
       <InputContainer>
         {isRecommendActive && isInputActive && <Button $backgroundColor={GRAY3} onClick={handleRecommendQuest} >퀘스트 추천받기</Button>}
         {isInputActive &&
-          <Input 
+          <Input
+            autoFocus
+            ref={inputRef}
             type="text" 
             placeholder='메시지 입력 ...'
             onKeyDown={handleKeyDown}

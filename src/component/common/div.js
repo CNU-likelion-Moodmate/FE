@@ -28,6 +28,7 @@ export const Button = styled.button`
   border-radius: ${ props => props.$radius || '30px'};
   margin: ${ props => props.$margin || '0'};
   cursor: pointer;
+  color: ${ props => props.$color || 'black'};
 `;
 
 export const Input = styled.input`
