@@ -41,15 +41,28 @@ const QuestItemContainer = styled.div`
 const QuestItem = ({ quest, handleDelete }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isReviewOpen, setIsReviewOpen] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = useState(true);
   const [showHeartIcon, setShowHeartIcon] = useState(false);
 
   const handleItemClick = () => {
-    setShowButton(!showButton);
+    if (showButton) {
+      setShowButton(false);
+    }
   };
 
   const handleGoodIconClick = () => {
-    setShowHeartIcon(true); // GoodIcon 클릭 시 하트 아이콘 표시
+    setShowHeartIcon(true);
+    setShowButton(false);
+    setIsReviewOpen(false);
+  };
+
+  const handleDeleteModalClose = () => {
+    setIsDeleteOpen(false);
+    setShowButton(true);
+  };
+
+  const resetButtonVisibility = () => {
+    setShowButton(true);
   };
 
     return (
@@ -62,20 +75,36 @@ const QuestItem = ({ quest, handleDelete }) => {
             <div className="QuestDate">{quest.date}</div>
             {showButton && (
               <ButtonContainer>
-                <QuestItemButton onClick={()=>setIsDeleteOpen(true)}>삭제할래요</QuestItemButton>
-                <QuestItemButton onClick={()=>setIsReviewOpen(true)} color={YELLOW}>완료했어요</QuestItemButton>
+                <QuestItemButton onClick={()=>{setIsDeleteOpen(true); setShowButton(false);}}>삭제할래요</QuestItemButton>
+                <QuestItemButton onClick={()=>{setIsReviewOpen(true); setShowButton(false);}} color={YELLOW}>완료했어요</QuestItemButton>
               </ButtonContainer>
             )}
           </QuestItemContainer>
-          <QuestDeleteModal isOpen={isDeleteOpen} handleDelete={handleDelete} id={quest.questRecordId} closeModal={() => setIsDeleteOpen(false)} />
+          <QuestDeleteModal
+            isOpen={isDeleteOpen}
+            handleDelete={handleDelete}
+            id={quest.questRecordId}
+            closeModal={() => setIsDeleteOpen(false)}
+            resetButtonVisibility={resetButtonVisibility}
+          />
           <QuestReviewModal
             isOpen={isReviewOpen}
+            handleDelete={handleDelete}
             id={quest.questRecordId}
-            closeModal={() => setIsReviewOpen(false)}
-            onGoodIconClick={() => {
-              setShowHeartIcon(true);
-              setIsReviewOpen(false);}} />
-        </>
+            closeModal={handleDeleteModalClose}
+            resetButtonVisibility={resetButtonVisibility}
+          />
+          <QuestReviewModal
+        isOpen={isReviewOpen}
+        id={quest.questRecordId}
+        closeModal={() => {
+          setIsReviewOpen(false);
+          setShowHeartIcon(false);
+          resetButtonVisibility(); // 버튼 상태 복원
+        }}
+        onGoodIconClick={handleGoodIconClick}
+      />
+    </>
     )
 }
 

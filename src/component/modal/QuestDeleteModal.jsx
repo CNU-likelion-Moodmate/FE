@@ -12,7 +12,7 @@ const ModalButton = styled(Button)`
   border-radius: 6px;
 `;
 
-const QuestDeleteModal = ({ isOpen = false, closeModal, id, handleDelete }) => {
+const QuestDeleteModal = ({ isOpen = false, closeModal, id, handleDelete, resetButtonVisibility }) => {
   const Delete = () => {
     handleDelete(id);
     closeModal();
@@ -21,7 +21,7 @@ const QuestDeleteModal = ({ isOpen = false, closeModal, id, handleDelete }) => {
     <Modal isOpen={isOpen} style={customModalStyles}>
       <Text $weight='SEMIBOLD' $size='16px'>추천 받은 퀘스트를 <br />완전히 삭제하시겠어요?</Text>
       <Div $flex={true} $margin='18px 0 0' $gap='20px'>
-        <ModalButton $backgroundColor={GRAY1} onClick={closeModal}>돌아가기</ModalButton>
+        <ModalButton $backgroundColor={GRAY1} onClick={() => { closeModal(); resetButtonVisibility(); }}>돌아가기</ModalButton>
         <ModalButton onClick={Delete}>삭제할게요</ModalButton>
       </Div>
     </Modal>
