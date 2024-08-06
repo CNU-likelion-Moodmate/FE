@@ -17,6 +17,11 @@ const ChatButton = styled(Button)`
   transform: translateX(-50%);
 `;
 
+const Container = styled(Div)`
+  padding: 0 28px 30px 28px;
+  overflow-y: auto;
+`;
+
 const settings = {
   dots: false,
   speed: 1000,
@@ -38,7 +43,7 @@ const Carousel = () => {
   };
 
   return(
-    <Div $padding='0 28px'>
+    <Container $padding='0 28px'>
       <Slider {...settings}>
         {data.map((item, index) => (
           <Div key={index}>
@@ -53,7 +58,7 @@ const Carousel = () => {
           )
         )}
       </Slider>
-    </Div>
+    </Container>
   )
 }
 

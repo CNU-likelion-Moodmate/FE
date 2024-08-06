@@ -1,3 +1,4 @@
+import React from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { customModalStyles } from './ModalStyle';
@@ -26,16 +27,17 @@ const Close = styled(CloseIcon)`
   cursor: pointer;
 `;
 
-const QuestReviewModal = ({ isOpen = false }) => {
+const QuestReviewModal = ({ isOpen = false, closeModal, id }) => {
+  
   return(
     <Modal isOpen={isOpen} style={customModalStyles}>
-      <Close />
+      <Close onClick={closeModal} />
       <Div style={{ top: '50%', transform: 'translateY(-50%)'}}>
         <Text $weight='SEMIBOLD' $size='16px'>이번 퀘스트는 어땠나요?</Text>
         <Text $weight='LIGHT' $size='13px'>좋았다면, 나만의 루틴에도 추가해드릴게요 🎉</Text>
         <ButtonContainer>
-          <GoodIcon />
-          <BadIcon />
+          <GoodIcon closeModal={closeModal} id={id} />
+          <BadIcon closeModal={closeModal} id={id} />
         </ButtonContainer>
       </Div>
     </Modal>

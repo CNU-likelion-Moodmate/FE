@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Button, Div } from "../../common/div";
 import { EMOTION } from "../../../constants/content"; 
@@ -57,12 +57,13 @@ const SelectEmotion = ({ selected }) => {
   //   }
   // }, [selectedEmotion])
 
-  const handleSelectEmotion = (e) => {
-    const emotion = e.target.dataset.emotion;
+  const handleSelectEmotion = (emotion) => {
     if (selectedEmotion.length < 2) {
       setSelectedEmotion([...selectedEmotion, emotion]);
+    } else if (selectedEmotion.length >= 2) {
+      setSelectedEmotion(selectedEmotion.filter((selected) => selected !== emotion));
     }
-  }
+  } 
 
   // redux에 저장
   const handleSubmit = () => {
@@ -78,8 +79,7 @@ const SelectEmotion = ({ selected }) => {
         {EMOTION.map((emotion, index) => (
           <Emotion 
             key={index} 
-            data-emotion={emotion}
-            onClick={handleSelectEmotion}
+            onClick={()=>handleSelectEmotion(emotion)}
             $selected={selectedEmotion.includes(emotion)}
           >
             {emotion}

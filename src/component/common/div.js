@@ -28,6 +28,18 @@ export const Button = styled.button`
   border-radius: ${ props => props.$radius || '30px'};
   margin: ${ props => props.$margin || '0'};
   cursor: pointer;
+  color: ${ props => props.$color || 'black'};
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  border: solid 1px ${GRAY1};
+  height: 43px;
+  border-radius: 24px;
+  padding: 0 19px;
+  $:focus {
+    outline: none;
+  }
 `;
 
 export const Div = styled.div`
@@ -90,4 +102,14 @@ export const InfoText = styled.div`
   color: ${ props => props.$color || "black" };
   height: ${ props => props.$height || 'auto'};
   max-width: ${ props => props.$width || 'auto'};
+`;
+
+export const DimDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 999;
 `;
