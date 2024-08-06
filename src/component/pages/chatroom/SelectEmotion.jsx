@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button, Div } from "../../common/div";
 import { EMOTION } from "../../../constants/content"; 
-import { GRAY3, GRAY7, YELLOW } from "../../../constants/color";
+import { GRAY3, GRAY7, GRAY4, YELLOW, BLACK } from "../../../constants/color";
 import { ReceivedMessage } from "./Message";
 import { useDispatch } from "react-redux";
 import { selectEmotion, selectActivity } from "../../../store/slices/emotionSlice";
@@ -42,24 +42,24 @@ const Slider = styled.input`
 
 const CompleteButton = styled(Button)`
   align-self: flex-start;
-  background-color: ${GRAY7};
+  background-color: ${({$disabled}) => $disabled ? GRAY7 : YELLOW};
   margin-top: 15px;
+  color: ${({$disabled}) => $disabled ? GRAY4 : BLACK}
 `;
 
 const SelectEmotion = ({ selected }) => {
   const [selectedEmotion, setSelectedEmotion] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(0);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (selectedEmotion.length === 2) {
-  //     console.log(selectedEmotion);
-  //   }
-  // }, [selectedEmotion])
+  const disable = selectedEmotion.length !== 2;
 
   const handleSelectEmotion = (emotion) => {
     if (selectedEmotion.length < 2) {
-      setSelectedEmotion([...selectedEmotion, emotion]);
+      if (!selectedEmotion.includes(emotion)) {
+        setSelectedEmotion([...selectedEmotion, emotion]);
+      } else {
+        setSelectedEmotion(selectedEmotion.filter((selected) => selected !== emotion));
+      }
     } else if (selectedEmotion.length >= 2) {
       setSelectedEmotion(selectedEmotion.filter((selected) => selected !== emotion));
     }
@@ -74,7 +74,7 @@ const SelectEmotion = ({ selected }) => {
 
   return (
     <>
-      <ReceivedMessage chat='어떤 감정이 널 힘들게 하고 있어?' />
+      <ReceivedMessage chat='어떤 감정이 널 힘들게 하고 있는지 2가지를 선택해줘' />
       <Div $flex={true} $justify='flex-start' $alginSelf='flex-start' $gap='4px' $wrap={true} $margin='0 0 15px' style={{flexGrow: 0}}>
         {EMOTION.map((emotion, index) => (
           <Emotion 
@@ -91,7 +91,7 @@ const SelectEmotion = ({ selected }) => {
         type="range"
         onChange={(e) => setSelectedActivity(e.target.value)}
       />
-      <CompleteButton onClick={handleSubmit}>입력 완료</CompleteButton>
+      <CompleteButton disabled={disable} $disabled={disable} onClick={handleSubmit}>입력 완료</CompleteButton>
     </>
   )
 }
