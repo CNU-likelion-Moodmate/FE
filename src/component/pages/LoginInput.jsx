@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Div } from "../common/div";
 import { useNavigate } from "react-router-dom";
-import { post } from "../../api/base";
+import { loginApi } from "../../api/user";
+import Loading from "../common/Loading";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/userSlice";
+import { selectActivity } from "../../store/slices/emotionSlice";
 
 const Form = styled.form`
   display: flex;
@@ -55,23 +59,25 @@ const SignUpLink = styled.a`
 `;
 
 const LoginInput = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
   const [error, setError] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const isPasswordValid = (password) => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{10,}$/;
-    return passwordRegex.test(password);
-  };
+  // const isPasswordValid = (password) => {
+  //   const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{10,}$/;
+  //   return passwordRegex.test(password);
+  // };
 
-  const isFormValid = isEmailValid(userId) && isPasswordValid(userPw);
+  const isFormValid = isEmailValid(userId);
+  // const isFormValid = isEmailValid(userId) && isPasswordValid(userPw);
   const buttonText = isFormValid ? "시작하기" : "로그인";
 
   const handleSubmit = async (e) => {
@@ -80,25 +86,26 @@ const LoginInput = () => {
       setError("ID 또는 비밀번호 형식이 올바르지 않습니다.");
       return;
     }
-
+    setIsLoading(true);
     try {
-      console.log("폼 데이터 전송:", { userId, userPw });
-      const response = await post('/login', { userId, userPw });
-      console.log("서버 응답:", response);
-
-      if (response.isMember === true ) {
-        setIsSubmitted(true);
-      } 
+      const response = await loginApi({ userId, userPw });
+      console.log(response)
+      if (response.status === 200) {
+        console.log("success")
+        const {userId, userName} = response.data;
+        dispatch(login({email: userId, name: userName}))
+        setIsLoading(false);
+        navigate("/");
+      }
+      // if (response.data.isMember === true ) {
+      //   // dispatch(login({name:  }))
+      //   navigate("/");
+      // }
     } catch (error) {
+      setIsLoading(false);
       setError("아이디랑 비밀번호를 확인해주세요.");
     }
   };
-
-  useEffect(() => {
-    if (isSubmitted) {
-      navigate("/");
-    }
-  }, [isSubmitted, navigate]);
 
   return (
     <Div>
@@ -121,6 +128,7 @@ const LoginInput = () => {
         </Button>
       </Form>
       <SignUpLink href="/signup">회원가입</SignUpLink>
+      {isLoading && <Loading />}
     </Div>
   );
 };

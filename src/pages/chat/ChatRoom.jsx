@@ -12,7 +12,7 @@ import SelectEmotion from '../../component/pages/chatroom/SelectEmotion';
 
 const Header = styled(Div)`
   display: flex;
-  height: 48px;
+  min-height: 48px;
   padding: 0 16px;
   font-family: crayon;
   font-size: 24px;
@@ -21,13 +21,26 @@ const Header = styled(Div)`
   gap: 13px;
   justify-content: flex-start;
   border-radius: 0;
+  flex-grow: 0;
+  width: 100%;
+`;
+
+const Container = styled(Div)`
+  padding: 20px 28px 50px 28px;
+  margin-bottom: 65px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  justify-content: flex-start;
+  flex-grow: 1;
 `;
 
 const InputContainer = styled(Div)`
-  position: absolute;
+  position: fixed;
   bottom: 24px;
+  padding: 0 28px;
   display: flex;
-  width: calc(100% - 54px);
+  width: 100%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
@@ -125,20 +138,19 @@ const ChatRoom = React.forwardRef(() => {
   }
 
   return(
-    <Div $radius='0' $height='100vh'>
+    <Div $flex={true} $direction='column' $radius='0' $height='100vh'>
       <Header>
         <ArrowIcon onClick={handleBack} style={{ cursor: 'pointer'}} />
         moodmate
       </Header>
-      <Div $flex={true} $direction='column' $justify='flex-start' $padding='20px 28px' $maxHeight='calc(100vh - 160px)' style={{ overflowY: 'auto'}}> 
+      <Container > 
         {chatList.map((chat, index) => {
           return chat.isUser ? <SentMessage key={index} chat={chat.chat} /> : <ReceivedMessage key={index} chat={chat.chat} />
         })}
         {showSelectEmotion && <SelectEmotion selected={setIsSelectEmotion} />}
         {isRecommendOk && CHAT['quest']}
         <div ref={messageEndRef}></div>
-      </Div>
-      <InputContainer>
+        <InputContainer>
         {isRecommendActive && isInputActive && <Button $backgroundColor={GRAY3} onClick={handleRecommendQuest} >퀘스트 추천받기</Button>}
         {isInputActive &&
           <Input
@@ -152,6 +164,8 @@ const ChatRoom = React.forwardRef(() => {
           />
         }
       </InputContainer>
+      </Container>
+
     </Div>
   )
 });

@@ -7,30 +7,25 @@ export const Message = styled(Text)`
   padding: 8px 10px;
 `;
 
+const MessageContainer = styled(Div)`
+  display: flex;
+  flex-grow: 0;
+  margin: 0 0 10px;
+  padding: 8px 10px;
+`;
+
 export const ReceivedMessage = ({ chat }) => {
   return (
-    <Div 
-      $flex={true} 
-      $backgroundColor={YELLOW}
-      $padding='8px 10px'
-      $alginSelf='flex-start'
-      $margin='0 0 10px'
-    >
+    <MessageContainer $backgroundColor={YELLOW} $alginSelf='flex-start' >
       { chat }
-    </Div>
+    </MessageContainer>
   )
 }
 
 export const SentMessage = ({ chat }) => {
   return (
-    <Div 
-      $flex={true} 
-      $backgroundColor={GRAY1}
-      $padding='8px 10px'
-      $alginSelf='flex-end'
-      $margin='0 0 10px'
-    >
+    <MessageContainer $backgroundColor={GRAY1} $alginSelf='flex-end' >
       { chat }
-    </Div>
+    </MessageContainer>
   )
 }
