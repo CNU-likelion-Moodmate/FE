@@ -42,9 +42,14 @@ const QuestItem = ({ quest, handleDelete }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [showHeartIcon, setShowHeartIcon] = useState(false);
 
   const handleItemClick = () => {
     setShowButton(!showButton);
+  };
+
+  const handleGoodIconClick = () => {
+    setShowHeartIcon(true); // GoodIcon 클릭 시 하트 아이콘 표시
   };
 
     return (
@@ -52,7 +57,7 @@ const QuestItem = ({ quest, handleDelete }) => {
           <QuestItemContainer onClick={handleItemClick} noHover={showButton}>
             <div className="Quest">
               <div className="QuestText">{quest.contents}</div>
-              <HeartIcon className="HeartIcon" />
+              {showHeartIcon && <HeartIcon className="HeartIcon" />}
             </div>
             <div className="QuestDate">{quest.date}</div>
             {showButton && (
@@ -63,7 +68,13 @@ const QuestItem = ({ quest, handleDelete }) => {
             )}
           </QuestItemContainer>
           <QuestDeleteModal isOpen={isDeleteOpen} handleDelete={handleDelete} id={quest.questRecordId} closeModal={() => setIsDeleteOpen(false)} />
-          <QuestReviewModal isOpen={isReviewOpen} id={quest.questRecordId} closeModal={() => setIsReviewOpen(false)} />
+          <QuestReviewModal
+            isOpen={isReviewOpen}
+            id={quest.questRecordId}
+            closeModal={() => setIsReviewOpen(false)}
+            onGoodIconClick={() => {
+              setShowHeartIcon(true);
+              setIsReviewOpen(false);}} />
         </>
     )
 }

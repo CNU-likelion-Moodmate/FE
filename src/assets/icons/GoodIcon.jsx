@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { GRAY2, YELLOW } from "../../constants/color";
 import { CompleteQuestApi } from "../../api/quest";
+import React from 'react';
 
 const Svg = styled.svg`
   cursor: pointer;
@@ -11,14 +12,16 @@ const Svg = styled.svg`
   }
 `;
 
-export const GoodIcon = ({ closeModal, id }) => {
+export const GoodIcon = ({ onClick, id }) => {
 
   const handleReview = async () => {
     try {
-      closeModal();
-      await CompleteQuestApi({questRecordId: id, rate: 1});
+      await CompleteQuestApi({ questRecordId: id, rate: 1 });
+      if (onClick) {
+        onClick();
+      }
     } catch (error) {
-      console.error(error);
+      console.error('API call error:', error);
     }
   }
 

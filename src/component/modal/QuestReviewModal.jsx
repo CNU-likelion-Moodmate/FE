@@ -27,7 +27,7 @@ const Close = styled(CloseIcon)`
   cursor: pointer;
 `;
 
-const QuestReviewModal = ({ isOpen = false, closeModal, id }) => {
+const QuestReviewModal = ({ isOpen = false, closeModal, id, onGoodIconClick }) => {
   
   return(
     <Modal isOpen={isOpen} style={customModalStyles}>
@@ -36,7 +36,7 @@ const QuestReviewModal = ({ isOpen = false, closeModal, id }) => {
         <Text $weight='SEMIBOLD' $size='16px'>이번 퀘스트는 어땠나요?</Text>
         <Text $weight='LIGHT' $size='13px'>좋았다면, 나만의 루틴에도 추가해드릴게요 🎉</Text>
         <ButtonContainer>
-          <GoodIcon closeModal={closeModal} id={id} />
+          <GoodIcon onClick={onGoodIconClick} id={id} />
           <BadIcon closeModal={closeModal} id={id} />
         </ButtonContainer>
       </Div>
