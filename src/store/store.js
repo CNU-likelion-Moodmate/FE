@@ -1,10 +1,28 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './slices/userSlice';
-import emotionReducer from './slices/emotionSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+import { combineReducers } from 'redux'
+import userSlice from './slices/userSlice';
+import emotionSlice from './slices/emotionSlice';
 
-export default configureStore({
-  reducer:{
-    user: userReducer,
-    emotion: emotionReducer,
-  }
-})
+const reducers = combineReducers({
+    user: userSlice,
+    emotion: emotionSlice,
+});
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['user']
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
+});
+
+export default store;

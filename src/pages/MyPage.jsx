@@ -4,6 +4,7 @@ import ProfileImage from '../assets/cards/profile_default.png';
 import { Div, ProfileName, ProfileId, Line } from "../component/common/div";
 import styled from "styled-components";
 import InfoItem from "../component/pages/InfoItem";
+import { useSelector } from 'react-redux';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -18,15 +19,7 @@ gap: 30px;
 `
 
 const MyPage = () => {
-  const [name, setName] = useState('');
-  const [userId, setUserId] = useState('');
-
-  useEffect(() => {
-    // 서버에서 데이터 가져오는 대신 임시 데이터 설정
-    setName('영주');
-    setUserId('yeongju');
-  }, []);
-
+  const { name, email } = useSelector((state) => state.user.value);
   return(
     <div>
       <Div $margin='70px 0 0' $flex={true} $direction='column'>
@@ -34,7 +27,7 @@ const MyPage = () => {
           <img src={ProfileImage} alt="Profile"/>
         </ProfileImg>
         <ProfileName>{name}</ProfileName>
-        <ProfileId>{userId}</ProfileId>
+        <ProfileId>{email}</ProfileId>
         <Line />
       </Div>
       <InfoContainer>
