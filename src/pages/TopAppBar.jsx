@@ -8,7 +8,6 @@ import { BLACK } from "../constants/color"
 const Container = styled(Div)`
   width: 100%;
   height: 90px;
-  justify-content: flex-start;
   display: flex;
   margin-bottom: 20px;
 `;
@@ -35,7 +34,7 @@ const TopAppBar = () => {
 
   return (
     <Container>
-      <div style={{marginLeft: 27.5}}>
+      <div style={{width: 140}}>
         <LinkButton to={URL.QUEST}>
         추천 받은 퀘스트
         <Underline />
