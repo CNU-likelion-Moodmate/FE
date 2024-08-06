@@ -11,13 +11,14 @@ const RecommendQuest = () => {
   const { emotion, activity } = useSelector((state) => state.emotion.value);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { email } = useSelector((state) => state.user.value);
 
   const handleRecommend = async () => {
     setIsLoading(true);
     try {
       const res = await recommandQuestApi({mood1: emotion[0], mood2: emotion[1], activity: Number(activity)});
       const saveQuest = res.data.recommendedQuest;
-      await SaveQuestApi({userId: 'user2@test.com', selectedQuests: saveQuest});
+      await SaveQuestApi({userId: email, selectedQuests: saveQuest});
       setIsLoading(false);
       navigate('/quest');
     } catch (error) {
@@ -33,6 +34,7 @@ const RecommendQuest = () => {
       $alginSelf='flex-start'
       $margin='0 0 10px'
       $direction='column'
+      style={{flexGrow: 0}}
     >
       <Text $align='left' $size='16px'>너에게 작은 행복을 더해줄 수 있는 좋은 퀘스트를 추천해줄게!🍀</Text>
       <Button 

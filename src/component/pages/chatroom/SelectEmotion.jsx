@@ -75,7 +75,7 @@ const SelectEmotion = ({ selected }) => {
   return (
     <>
       <ReceivedMessage chat='어떤 감정이 널 힘들게 하고 있어?' />
-      <Div $flex={true} $justify='flex-start' $alginSelf='flex-start' $gap='4px' $wrap={true} $margin='0 0 15px'>
+      <Div $flex={true} $justify='flex-start' $alginSelf='flex-start' $gap='4px' $wrap={true} $margin='0 0 15px' style={{flexGrow: 0}}>
         {EMOTION.map((emotion, index) => (
           <Emotion 
             key={index} 

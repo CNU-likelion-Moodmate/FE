@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { PURGE } from 'redux-persist';
 
 const initialStateValue = {
   name: "", 
@@ -7,14 +8,19 @@ const initialStateValue = {
 
 export const userSlice = createSlice({
   name: "user",
-  initialState: { value: initialStateValue},
+  initialState: { value: initialStateValue },
   reducers: {
-      login: (state, action) => {
-          state.value = action.payload
-      },
-      logout: (state) => {
-          state.value = initialStateValue
-      }
+    login: (state, action) => {
+      state.value = action.payload;
+    },
+    logout: (state) => {
+      state.value = initialStateValue;
+    },
+  },
+  extraReducers: builder => {
+    builder.addCase(PURGE, (state) => {
+      state.value = initialStateValue;
+    });
   },
 });
 

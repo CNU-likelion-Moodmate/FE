@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import SignUpHeader from './SignUpHeader';
 import SignUpBtn from './SignUpBtn';
 import CheckboxField from './CheckboxField';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { signUpApi } from '../../api/user';
+import Loading from '../../component/common/Loading';
 
 const Container = styled.div`
   width: 100%;
@@ -15,13 +18,29 @@ const Container = styled.div`
 
 const SignUpAgree = () => {
   const [allChecked, setAllChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState({
     age: false,
     terms: false,
     privacy: false,
   });
 
-  const navigate = useNavigate();
+  const signUpData = useLocation().state;
+  const navigation = useNavigate();
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const data = {userId: signUpData.email, userPw: signUpData.password, userName: signUpData.userName};
+    try {
+      const res = await signUpApi(data);
+      if (res.status === 200) {
+        setIsLoading(false);
+        navigation('/login');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const handleAllChange = () => {
     const newValue = !allChecked;
@@ -90,7 +109,9 @@ const SignUpAgree = () => {
           link="/privacy"
         />
       </Container>
-      <SignUpBtn isFormValid={isFormValid} onClick={handleButtonClick} type="button">다음</SignUpBtn>
+
+      <SignUpBtn onClick={handleSubmit} isFormValid={isFormValid} type="button">회원가입</SignUpBtn>
+      {isLoading && <Loading />}
     </>
   );
 };

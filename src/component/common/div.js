@@ -37,7 +37,7 @@ export const Input = styled.input`
   height: 43px;
   border-radius: 24px;
   padding: 0 19px;
-  $:focus {
+  &:focus {
     outline: none;
   }
 `;
