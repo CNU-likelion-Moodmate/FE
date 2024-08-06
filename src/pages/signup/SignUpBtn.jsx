@@ -16,10 +16,10 @@ const StyledButton = styled.button`
 `;
 
 //폼 제출 이벤트가 발생해야 Link이동 됨!
-const SignUpBtn = ({ isFormValid, onClick, children, type, to }) => {
+const SignUpBtn = ({ isFormValid, onClick, children, type, to, state }) => {
   if (isFormValid) {
   return ( 
-    <Link to={to}>
+    <Link to={to} state={state}>
       <StyledButton
           isFormValid={isFormValid}
           onClick={onClick}

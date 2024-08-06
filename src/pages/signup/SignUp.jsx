@@ -6,15 +6,16 @@ import SignUpBtn from "./SignUpBtn";
 
 const Container = styled.div`
 width: 100%;
-height: 350px;
+margin-bottom: 54px;
 `
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [userName, setUserName] = useState("");
 
-    const isFormValid = email && password && confirmPassword && password === confirmPassword;
+    const isFormValid = email && password && confirmPassword && password === confirmPassword && userName;
 
     return (
         <>
@@ -29,9 +30,17 @@ const SignUp = () => {
             label="이메일 아이디"
           />
           <SignUpInput
+            id="userName"
+            type="text"
+            placeholder="이름을 입력해주세요"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            label="이름"
+          />
+          <SignUpInput
             id="password"
             type="password"
-            placeholder="영어 소문자와 숫자를 포함하여 10자 이상 입력"
+            placeholder="비밀번호를 입력해주세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             label="비밀번호"
@@ -45,7 +54,7 @@ const SignUp = () => {
             label="비밀번호 확인"
           />
         </Container>
-        <SignUpBtn isFormValid={isFormValid} to="/signupagree" type="submit">다음</SignUpBtn>
+        <SignUpBtn isFormValid={isFormValid} to="/signupagree" state={{email, password, userName}} type="submit">다음</SignUpBtn>
         </>
     )
 }

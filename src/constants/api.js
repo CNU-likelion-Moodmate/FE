@@ -1,6 +1,6 @@
 export const USER_URL = {
   login: '/login',
-  register: '/register',
+  signUp: '/signUp',
 };
 
 export const CHAT_URL = {
