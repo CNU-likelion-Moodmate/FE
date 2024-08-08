@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TabBar from "../component/common/TabBar";
 import ProfileImage from '../assets/cards/profile_default.png';
 import { Div, ProfileName, ProfileId, Line } from "../component/common/div";

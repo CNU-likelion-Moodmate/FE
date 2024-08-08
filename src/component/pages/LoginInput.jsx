@@ -6,7 +6,6 @@ import { loginApi } from "../../api/user";
 import Loading from "../common/Loading";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/slices/userSlice";
-import { selectActivity } from "../../store/slices/emotionSlice";
 
 const Form = styled.form`
   display: flex;
